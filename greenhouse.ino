@@ -17,8 +17,6 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define RELE_PIN 7 //Relè is connected to digital pin 7
 #define SOIL_MOISTURE_PIN A6 //Soil moisture sensor connected to analog pin A6
 
-String myString = "Hello";
-
 void setup() {
   Serial.begin(9600);
   
@@ -61,10 +59,10 @@ void measureandpour(void) {
 
   if (sensorValue > THRESHOLD) {
     // Turn on the water pump
-    digitalWrite(RELE_PIN, HIGH);
+    digitalWrite(RELE_PIN, LOW);
   } else {
     // Turn off the water pump
-    digitalWrite(RELE_PIN, LOW);
+    digitalWrite(RELE_PIN, HIGH);
   }
 
   // Wait one second before measure the soil moisture again
