@@ -18,6 +18,10 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define SOIL_MOISTURE_PIN A6 //Soil moisture sensor connected to analog pin A6
 long soil = 0;
 
+int redPin= 4;
+int greenPin = 6;
+int bluePin = 5;
+
 #define LIGHT_SENSOR_PIN 2
 int light = 0;
 String lighttext = "";
@@ -33,6 +37,10 @@ void setup() {
   digitalWrite(RELE_PIN, LOW);
 
   pinMode(SOIL_MOISTURE_PIN, INPUT);
+
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
 }
 
 void loop() {
@@ -41,6 +49,7 @@ void loop() {
   lightcontrol();
 
   showtext(String(soil)+" "+String(lighttext), false);
+
   delay(1000);
 }
 
@@ -84,6 +93,7 @@ void lightcontrol(void) {
   light = digitalRead(LIGHT_SENSOR_PIN);
   if (light == HIGH){ // in front of it 
     lighttext = "DARK";
+    discoFade(5);
   }
   else{
     lighttext = "LIGHT";
@@ -105,5 +115,50 @@ void showtext(String text, bool scroll) {
   if (scroll) {
     display.startscrollright(0x00, 0x0F);
     delay(2000);
+  }
+}
+
+void setColor(int redValue, int greenValue, int blueValue) {
+  analogWrite(redPin, redValue);
+  analogWrite(greenPin, greenValue);
+  analogWrite(bluePin, blueValue);
+}
+
+void discoFade(int wait) {
+
+  // Rot -> Gelb
+  for(int g = 0; g <= 255; g++){
+    setColor(255, g, 0);
+    delay(wait);
+  }
+
+  // Gelb -> Grün
+  for(int r = 255; r >= 0; r--){
+    setColor(r, 255, 0);
+    delay(wait);
+  }
+
+  // Grün -> Cyan
+  for(int b = 0; b <= 255; b++){
+    setColor(0, 255, b);
+    delay(wait);
+  }
+
+  // Cyan -> Blau
+  for(int g = 255; g >= 0; g--){
+    setColor(0, g, 255);
+    delay(wait);
+  }
+
+  // Blau -> Magenta
+  for(int r = 0; r <= 255; r++){
+    setColor(r, 0, 255);
+    delay(wait);
+  }
+
+  // Magenta -> Rot
+  for(int b = 255; b >= 0; b--){
+    setColor(255, 0, b);
+    delay(wait);
   }
 }
