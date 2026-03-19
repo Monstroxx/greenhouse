@@ -16,18 +16,32 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define THRESHOLD 400
 #define RELE_PIN 7 //Relè is connected to digital pin 7
 #define SOIL_MOISTURE_PIN A6 //Soil moisture sensor connected to analog pin A6
+long soil = 0;
+
+#define LIGHT_SENSOR_PIN 2
+int light = 0;
+String lighttext = "";
 
 void setup() {
   Serial.begin(9600);
-  
+
+  digitalWrite(RELE_PIN, HIGH);  // Pumpe aus beim Start
+
   setupdisplay();
 
   pinMode(RELE_PIN, OUTPUT);
   digitalWrite(RELE_PIN, LOW);
+
+  pinMode(SOIL_MOISTURE_PIN, INPUT);
 }
 
 void loop() {
   measureandpour();
+
+  lightcontrol();
+
+  showtext(String(soil)+" "+String(lighttext), false);
+  delay(1000);
 }
 
 void setupdisplay(void) {
@@ -47,27 +61,35 @@ void setupdisplay(void) {
 }
 
 void measureandpour(void) {
-  long sensorValue = 0;
+  soil = 0;
   for (int i = 0; i < 100; i++) {
-    sensorValue += analogRead(SOIL_MOISTURE_PIN);
+    soil += analogRead(SOIL_MOISTURE_PIN);
   }
-  sensorValue = sensorValue / 100;
+  soil = soil / 100;
 
   // Print the sensor reading values
   Serial.print("Soil moisture sensor value: ");
-  Serial.println(sensorValue);
+  Serial.println(soil);
 
-  if (sensorValue > THRESHOLD) {
+  if (soil > THRESHOLD) {
     // Turn on the water pump
     digitalWrite(RELE_PIN, LOW);
   } else {
     // Turn off the water pump
     digitalWrite(RELE_PIN, HIGH);
   }
+}
 
-  // Wait one second before measure the soil moisture again
-  delay(1000);
-  showtext(String(sensorValue), false);
+void lightcontrol(void) {
+  light = digitalRead(LIGHT_SENSOR_PIN);
+  if (light == HIGH){ // in front of it 
+    lighttext = "DARK";
+  }
+  else{
+    lighttext = "LIGHT";
+  }
+  Serial.print("Light sensor value: ");
+  Serial.println(lighttext);
 }
 
 void showtext(String text, bool scroll) {
