@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Fritzing (https://fritzing.org/) -->
+<netlist date="2026-03-19T12:08:30" sketch="greenhouse.fzz">
+ <net>
+  <connector id="connector0" name="pin 1">
+   <part id="855181130" label="M1" title="DC Motor"/>
+  </connector>
+  <connector id="connector5" name="NO">
+   <part id="855140040" label="relai" title="KY-019 5V Relay Module"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector24" name="D6">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector1" name="Pin 1">
+   <part id="855136270" label="R3" title="220Ω Resistor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector23" name="D5">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector1" name="Pin 1">
+   <part id="855136070" label="R2" title="220Ω Resistor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector22" name="D4">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector1" name="Pin 1">
+   <part id="855135840" label="R1" title="220Ω Resistor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector44" name="3V3">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector7" name="3.3V">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector14" name="3.3V">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector38" name="A4">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector8" name="SDI/SDA">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector11" name="SDI/SDA">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector2" name="SDA">
+   <part id="97820" label="Display" title="Grove OLED 128x96"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector37" name="A5">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector9" name="SCK/SCL">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector13" name="SCK/SCL">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector3" name="SCL">
+   <part id="97820" label="Display" title="Grove OLED 128x96"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector6" name="GND">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector15" name="GND">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+  <connector id="connector32" name="GND">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector19" name="GND">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector6" name="GND">
+   <part id="100440" label="soil moisture sensor" title="Soil Moisture Sensor"/>
+  </connector>
+  <connector id="connector2" name="-">
+   <part id="855140040" label="relai" title="KY-019 5V Relay Module"/>
+  </connector>
+  <connector id="connector0" name="-">
+   <part id="855117700" label="VCC1" title="Battery block 9V"/>
+  </connector>
+  <connector id="connector3" name="GND">
+   <part id="100440" label="soil moisture sensor" title="Soil Moisture Sensor"/>
+  </connector>
+  <connector id="connector0" name="gnd">
+   <part id="855137610" label="servo" title="Dagu DGServo 9g (Top view)"/>
+  </connector>
+  <connector id="connector2" name="T+">
+   <part id="855193580" label="Photo diode" title="TCRT5000 sensor module"/>
+  </connector>
+  <connector id="connector0" name="GND">
+   <part id="97820" label="Display" title="Grove OLED 128x96"/>
+  </connector>
+  <connector id="connector1" name="common cathode">
+   <part id="61450" label="LED1" title="Red (633nm) LED"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector34" name="5V">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector1" name="VCC">
+   <part id="97820" label="Display" title="Grove OLED 128x96"/>
+  </connector>
+  <connector id="connector3" name="T-">
+   <part id="855193580" label="Photo diode" title="TCRT5000 sensor module"/>
+  </connector>
+  <connector id="connector7" name="VCC">
+   <part id="100440" label="soil moisture sensor" title="Soil Moisture Sensor"/>
+  </connector>
+  <connector id="connector1" name="+">
+   <part id="855140040" label="relai" title="KY-019 5V Relay Module"/>
+  </connector>
+  <connector id="connector1" name="vcc">
+   <part id="855137610" label="servo" title="Dagu DGServo 9g (Top view)"/>
+  </connector>
+  <connector id="connector2" name="VCC">
+   <part id="100440" label="soil moisture sensor" title="Soil Moisture Sensor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector36" name="A6">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector5" name="SIG">
+   <part id="100440" label="soil moisture sensor" title="Soil Moisture Sensor"/>
+  </connector>
+  <connector id="connector4" name="SIG">
+   <part id="100440" label="soil moisture sensor" title="Soil Moisture Sensor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector20" name="D2">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector1" name="D-">
+   <part id="855193580" label="Photo diode" title="TCRT5000 sensor module"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector31" name="VIN">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector1" name="+">
+   <part id="855117700" label="VCC1" title="Battery block 9V"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector3" name="green anode">
+   <part id="61450" label="LED1" title="Red (633nm) LED"/>
+  </connector>
+  <connector id="connector0" name="Pin 0">
+   <part id="855136270" label="R3" title="220Ω Resistor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector2" name="blue anode">
+   <part id="61450" label="LED1" title="Red (633nm) LED"/>
+  </connector>
+  <connector id="connector0" name="Pin 0">
+   <part id="855136070" label="R2" title="220Ω Resistor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector0" name="red anode">
+   <part id="61450" label="LED1" title="Red (633nm) LED"/>
+  </connector>
+  <connector id="connector0" name="Pin 0">
+   <part id="855135840" label="R1" title="220Ω Resistor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector0" name="-">
+   <part id="855141670" label="VCC2" title="Battery block 9V"/>
+  </connector>
+  <connector id="connector1" name="pin 2">
+   <part id="855181130" label="M1" title="DC Motor"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector4" name="Common">
+   <part id="855140040" label="relai" title="KY-019 5V Relay Module"/>
+  </connector>
+  <connector id="connector1" name="+">
+   <part id="855141670" label="VCC2" title="Battery block 9V"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector25" name="D7">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector0" name="S">
+   <part id="855140040" label="relai" title="KY-019 5V Relay Module"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector21" name="D3">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector2" name="pulse">
+   <part id="855137610" label="servo" title="Dagu DGServo 9g (Top view)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector28" name="D10">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector29" name="D11/MOSI">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector18" name="RESET">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+  <connector id="connector33" name="RESET">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector40" name="A2">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector27" name="D9">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector41" name="A1">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector45" name="D13/SCK">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector17" name="D0/RX">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector42" name="A0">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector39" name="A3">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector35" name="A7">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector16" name="D1/TX">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector43" name="AREF">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector26" name="D8">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector30" name="D12/MISO">
+   <part id="72090" label="Part3" title="Arduino Nano (Rev3.0)"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector10" name="!CS">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector12" name="SDO/ADR">
+   <part id="58000" label="BME280" title="BME280 Breakout"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector0" name="D+">
+   <part id="855193580" label="Photo diode" title="TCRT5000 sensor module"/>
+  </connector>
+ </net>
+ <net>
+  <connector id="connector3" name="NC">
+   <part id="855140040" label="relai" title="KY-019 5V Relay Module"/>
+  </connector>
+ </net>
+</netlist>
