@@ -18,7 +18,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 #define SOIL_MOISTURE_PIN A6 //Soil moisture sensor connected to analog pin A6
 long soil = 0;
 
-int redPin= 4;
+int redPin = 9;
 int greenPin = 6;
 int bluePin = 5;
 

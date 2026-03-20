@@ -79,7 +79,7 @@ The enclosure is designed to be assembled from 3D-printed and laser-cut parts so
 |---|---|---|
 | `D2` | Photodiode module | DO (digital out) |
 | `D3` | Servo motor | Signal (pulse) |
-| `D4` | 220Ω → RGB LED | Red anode |
+| `D9` | 220Ω → RGB LED | Red anode |
 | `D5` | 220Ω → RGB LED | Blue anode |
 | `D6` | 220Ω → RGB LED | Green anode |
 | `D7` | Relay module (KY-019) | S (signal) |
