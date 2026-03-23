@@ -4,10 +4,10 @@
 #include <Adafruit_SSD1306.h>
 
 // Servo
-#include <Servo.h> // Library: "Servo" by Michael Margolis
+#include <Servo.h> 
 
 // BME 280 Sensor
-#include <Adafruit_Sensor.h> // Library: '"Adafruit BME280 Library" by Adafruit' / '"Adafruit Unified Sensor" by Adafruit'
+#include <Adafruit_Sensor.h> 
 #include <Adafruit_BME280.h>
 
 
@@ -59,7 +59,7 @@ unsigned long lastDisplayMs = 0;
 unsigned long lastDiscoMs = 0;
 
 const unsigned long SENSOR_INTERVAL_MS = 1000;
-const unsigned long DISPLAY_INTERVAL_MS = 1000;
+const unsigned long DISPLAY_INTERVAL_MS = 3000;
 const unsigned long DISCO_INTERVAL_MS = 10;
 
 Servo WindowServo;
