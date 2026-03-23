@@ -29,7 +29,7 @@ const int greenPin = 6;
 const int bluePin = 5;
 
 const int light_sensor_pin = 2;
-const int servoPin = 4;
+const int servoPin = 3;
 const int rele_pin = 7;
 const uint8_t soil_moisture_pin = A6;
 
@@ -59,7 +59,7 @@ void setup() {
     while (1)
     {
       Serial.println("BME280 nicht gefunden! Bitte fixen und neustarten.");
-      throw 404;
+      //throw 404;
     }
   }
 
@@ -103,8 +103,9 @@ void loop() {
 
   lightcontrol();
 
-  showtext(String(soil)+" "+String(lighttext), false);
-
+  showtext("S: "+ String(soil)+" L: "+ String(lighttext), false);
+  delay(1000);
+  showtext("T: "+ String(temp)+" H: "+String(hum), false);
   delay(1000);
 }
 
@@ -147,11 +148,12 @@ void measureandpour(void) {
 void lightcontrol(void) {
   int light = digitalRead(light_sensor_pin);
   if (light == HIGH){ // in front of it
-    lighttext = "DARK";
-    discoFade(5);
+    lighttext = "off";
+    disco_mode();
   }
   else{
-    lighttext = "LIGHT";
+    lighttext = "on";
+    setColor(0,0,0);
   }
   Serial.print("Light sensor value: ");
   Serial.println(lighttext);
@@ -162,13 +164,13 @@ void showtext(String text, bool scroll) {
 
   display.setTextSize(2); // Draw 2X-scale text
   display.setTextColor(SSD1306_WHITE);
-  display.setCursor(10, 0);
+  display.setCursor(0, 0);
   display.println(text);
   display.display();      // Show initial text
   delay(100);
 
   if (scroll) {
-    display.startscrollright(0x00, 0x0F);
+    display.startscrollleft(0x00, 0x0F);
     delay(2000);
   }
 }
@@ -195,48 +197,6 @@ void setCorrectedRgb(int r, int g, int b) // Use for new LEDs
   analogWrite(greenPin, gammaCorrect(g));
   analogWrite(bluePin, gammaCorrect(b));
 }
-
-void discoFade(int wait) { // Redundanz
-
-  // Rot -> Gelb
-  for(int g = 0; g <= 255; g++){
-    setColor(255, g, 0);
-    delay(wait);
-  }
-
-  // Gelb -> Grün
-  for(int r = 255; r >= 0; r--){
-    setColor(r, 255, 0);
-    delay(wait);
-  }
-
-  // Grün -> Cyan
-  for(int b = 0; b <= 255; b++){
-    setColor(0, 255, b);
-    delay(wait);
-  }
-
-  // Cyan -> Blau
-  for(int g = 255; g >= 0; g--){
-    setColor(0, g, 255);
-    delay(wait);
-  }
-
-  // Blau -> Magenta
-  for(int r = 0; r <= 255; r++){
-    setColor(r, 0, 255);
-    delay(wait);
-  }
-
-  // Magenta -> Rot
-  for(int b = 255; b >= 0; b--){
-    setColor(255, 0, b);
-    delay(wait);
-  }
-}
-
-
-// ChatGPTs try of disco mode
 
 // HSV -> RGB
 void hsvToRgb(float h, float s, float v, int &r, int &g, int &b)
