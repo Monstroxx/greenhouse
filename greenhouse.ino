@@ -182,11 +182,11 @@ void measureandpour(void) {
 void lightcontrol(void) {
   int light = digitalRead(light_sensor_pin);
   if (light == HIGH){ // in front of it
-    lighttext = "off";
+    lighttext = "on";
     discoEnabled = true;
   }
   else{
-    lighttext = "on";
+    lighttext = "off";
     discoEnabled = false;
     setColor(0,0,0);
   }

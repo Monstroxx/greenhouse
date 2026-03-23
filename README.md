@@ -73,6 +73,8 @@ The enclosure is designed to be assembled from 3D-printed and laser-cut parts so
 
 ## Wiring
 
+![Wiring Schematic](docs/schematic.png)
+
 ### Pin Mapping
 
 | Arduino Pin | Component | Component Pin |
@@ -190,13 +192,28 @@ greenhouse/
 
 ### Configuration
 
-Key thresholds are defined at the top of `greenhouse.ino`:
+Key thresholds and timings are defined at the top of `greenhouse.ino`:
 
 ```cpp
-#define THRESHOLD 400          // Soil moisture (0–400 = wet, >400 = dry)
-#define RELE_PIN 7             // Relay control pin
-#define SOIL_MOISTURE_PIN A6   // Soil sensor analog input
-#define LIGHT_SENSOR_PIN 2     // Photodiode digital input
+// Soil moisture validation
+#define MOISTURE_THRESHOLD 400 // From 0 to 400 = wet soil, Above 400 = dry soil
+
+// Climate limits for window automated control
+const int max_temp = 25;       // Open window if temp > max_temp
+const int min_temp = 18;       // Close window if temp < min_temp
+const int temp_margin = 2;     // Hysteresis margin
+const int max_hum = 70;        // Open window if humidity > max_hum
+const int min_hum = 50;        // Close window if humidity < min_hum
+const int hum_margin = 5;      // Hysteresis margin
+
+// Servo angles
+const int window_close_pos = 90;
+const int window_open_pos = 180;
+
+// Update intervals (in milliseconds)
+const unsigned long SENSOR_INTERVAL_MS = 1000;  // Measure sensors every 1s
+const unsigned long DISPLAY_INTERVAL_MS = 3000; // Cycle display pages every 3s
+const unsigned long DISCO_INTERVAL_MS = 10;     // Update LED colors every 10ms
 ```
 
 ---
