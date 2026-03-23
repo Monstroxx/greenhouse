@@ -37,6 +37,9 @@ const uint8_t soil_moisture_pin = A6;
 const int max_temp = 25;
 const int min_temp = 18;
 const int temp_margin = 2;
+const int max_hum = 70;
+const int min_hum = 50;
+const int hum_margin = 5;
 
 const int window_close_pos = 90;
 const int window_open_pos = 180;
@@ -109,12 +112,12 @@ void loop() {
     pres = bme.readPressure() / 100.0; // hPa
 
     // Window management
-    if (temp > max_temp - temp_margin)
-    { // To hot
+    if (temp > max_temp - temp_margin || hum > max_hum - hum_margin)
+    { // To hot or too humid
       window_angle = window_open_pos;
     }
-    else if (temp < min_temp + temp_margin)
-    { // To cold
+    else if (temp < min_temp + temp_margin || hum < min_hum + hum_margin)
+    { // To cold or too dry
       window_angle = window_close_pos;
     }
 
