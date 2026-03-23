@@ -42,9 +42,25 @@ const int window_close_pos = 90;
 const int window_open_pos = 180;
 
 // TODO: globals -> local machen
-String lighttext = "";
+const char* lighttext = "off";
 int window_angle = 0;
 long soil = 0;
+
+float temp = 0.0;
+float hum = 0.0;
+float pres = 0.0;
+
+bool discoEnabled = false;
+bool displayPage = false;
+float discoHue = 0.0f;
+
+unsigned long lastSensorMs = 0;
+unsigned long lastDisplayMs = 0;
+unsigned long lastDiscoMs = 0;
+
+const unsigned long SENSOR_INTERVAL_MS = 1000;
+const unsigned long DISPLAY_INTERVAL_MS = 1000;
+const unsigned long DISCO_INTERVAL_MS = 10;
 
 Servo WindowServo;
 Adafruit_BME280 bme;
@@ -63,12 +79,12 @@ void setup() {
     }
   }
 
-  digitalWrite(rele_pin, HIGH);  // Pumpe aus beim Start
-
   setupdisplay();
 
   pinMode(rele_pin, OUTPUT);
-  digitalWrite(rele_pin, LOW);
+  digitalWrite(rele_pin, HIGH); // Pumpe aus beim Start
+
+  pinMode(light_sensor_pin, INPUT);
 
   pinMode(soil_moisture_pin, INPUT);
 
@@ -82,31 +98,46 @@ void setup() {
 }
 
 void loop() {
-  // Read BME 280 Sensor
-  float temp = bme.readTemperature();
-  float hum = bme.readHumidity();
-  float pres = bme.readPressure() / 100.0; // hPa
+  unsigned long now = millis();
 
-  // Window management
-  if (temp > max_temp - temp_margin)
-  { // To hot
-    window_angle = window_open_pos;
+  if (now - lastSensorMs >= SENSOR_INTERVAL_MS) {
+    lastSensorMs = now;
+
+    // Read BME 280 Sensor
+    temp = bme.readTemperature();
+    hum = bme.readHumidity();
+    pres = bme.readPressure() / 100.0; // hPa
+
+    // Window management
+    if (temp > max_temp - temp_margin)
+    { // To hot
+      window_angle = window_open_pos;
+    }
+    else if (temp < min_temp + temp_margin)
+    { // To cold
+      window_angle = window_close_pos;
+    }
+
+    WindowServo.write(window_angle);
+    measureandpour();
+    lightcontrol();
   }
-  else if (temp < min_temp + temp_margin)
-  { // To cold
-    window_angle = window_close_pos;
+
+  if (discoEnabled && (now - lastDiscoMs >= DISCO_INTERVAL_MS)) {
+    lastDiscoMs = now;
+    discoStep();
   }
 
-  WindowServo.write(window_angle);
+  if (now - lastDisplayMs >= DISPLAY_INTERVAL_MS) {
+    lastDisplayMs = now;
+    displayPage = !displayPage;
 
-  measureandpour();
-
-  lightcontrol();
-
-  showtext("S: "+ String(soil)+" L: "+ String(lighttext), false);
-  delay(1000);
-  showtext("T: "+ String(temp)+" H: "+String(hum), false);
-  delay(1000);
+    if (!displayPage) {
+      showtext("S: " + String(soil) + " L: " + String(lighttext), false);
+    } else {
+      showtext("T: " + String(temp, 1) + " H: " + String(hum, 1), false);
+    }
+  }
 }
 
 void setupdisplay(void) {
@@ -149,10 +180,11 @@ void lightcontrol(void) {
   int light = digitalRead(light_sensor_pin);
   if (light == HIGH){ // in front of it
     lighttext = "off";
-    disco_mode();
+    discoEnabled = true;
   }
   else{
     lighttext = "on";
+    discoEnabled = false;
     setColor(0,0,0);
   }
   Serial.print("Light sensor value: ");
@@ -167,11 +199,9 @@ void showtext(String text, bool scroll) {
   display.setCursor(0, 0);
   display.println(text);
   display.display();      // Show initial text
-  delay(100);
 
   if (scroll) {
     display.startscrollleft(0x00, 0x0F);
-    delay(2000);
   }
 }
 
@@ -248,19 +278,19 @@ void hsvToRgb(float h, float s, float v, int &r, int &g, int &b)
   b = bf * 255;
 }
 
-void disco_mode()
-{
+void discoStep() {
   int r, g, b;
 
-  for (float h = 0.0; h < 1.0; h += 0.001)
-  {
-    hsvToRgb(h, 1.0, 1.0, r, g, b);
+  hsvToRgb(discoHue, 1.0, 1.0, r, g, b);
 
-    // optional: verhindert hartes "Einspringen" von Blau bei billigen LEDs
-    if (b > 0 && b < 5)
-      b = 5;
+  // optional: verhindert hartes "Einspringen" von Blau bei billigen LEDs
+  if (b > 0 && b < 5)
+    b = 5;
 
-    setCorrectedRgb(r, g, b);
-    delay(10);
+  setCorrectedRgb(r, g, b);
+
+  discoHue += 0.001f;
+  if (discoHue >= 1.0f) {
+    discoHue = 0.0f;
   }
 }
