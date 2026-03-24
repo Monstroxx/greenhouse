@@ -113,7 +113,7 @@ The water pump runs on a **separate 9V power supply** switched through the relay
 
 ### 3D Printing
 
-Structural parts of the greenhouse are provided as **STL** files in the [`3d/`](3d/) directory. Print with standard PLA or PETG at 0.2 mm layer height.
+Structural parts of the greenhouse are provided as **STL** files in the [`3D/`](3D/) directory. Print with standard PLA or PETG at 0.2 mm layer height.
 
 ### Laser Cutting
 
