@@ -108,6 +108,7 @@ The water pump runs on a **separate 9V power supply** switched through the relay
 
 ---
 
+
 ## Assembly
 
 ### 3D Printing
@@ -119,6 +120,36 @@ Structural parts of the greenhouse are provided as **STL** files in the [`3d/`](
 Panel and wall templates are provided as **SVG** files in the [`laser/`](laser/) directory. Designed for acrylic (Plexiglas) sheets.
 
 > The greenhouse is designed with snap-fit / plug-in connections so it can be assembled and disassembled without tools for easy transport.
+
+### Step By Step
+
+1. Printing
+  Print all needed Parts from [3D Printing](#3d-printing). You can also print the water tank extension but you can just take a bottle or cub.
+
+2. Wiring
+  Assemble the 3D Printed structure of the Greenhouse so you know where to put the sensors and the actors.
+
+  Allways have a look on the wiring mentioned in [Wiring](#wiring). You need to connect the stuff to the arduino exactly like in our plan.
+  
+  The RGB LEDs needs to be in the plant tank and point to the plant.
+  
+  The servo needs to be glued on the Pillar Top, so it can open the Window with rotation. To get a longer arm we used [a model from Makerworld](https://makerworld.com/de/models/981832-servo-arms-horn-and-hook) (the 40mm one).
+
+  The pump can be put into the tank extension or just into a water bottle. The pipe can be threaded through one of the holes provided in the Plant Base or Pillar Top.
+
+  The sensors also needs to be put inside the plant tank. Just glue them where is practicable. Use the holes for wiring.
+
+3. Code
+  Flash the code found in [Flashing](#flashing). Please check if the servo is spining in the right direction. Please check if the variables are fitting your needs.
+
+4. Glass
+  You need a laser cutter for the glass and cut it like mentioned in [Laser Cutting](#laser-cutting).
+
+3. Assemble
+  Now you need to put the glass into the rails in the pillars to rotate them correctly. Then glue the Pillars to the bottom.
+  On the top you need the two windows to glue on the Top Window Holder. The first gets glued completely onto one side. The second needs to be on the side with the slight dip. You only glue the second with a hinge into the slight dip.
+
+  Put the Plant Base tight onto the Base and the Window can be put onto the Pillar Top and It can be easily lifted and removed.
 
 ---
 
