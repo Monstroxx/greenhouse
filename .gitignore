@@ -84,3 +84,7 @@ Debug/
 *.l#?
 *.lck
 eagle.epf
+
+
+# OWN
+*.~lock*
