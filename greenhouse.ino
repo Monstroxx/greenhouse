@@ -41,8 +41,8 @@ const int max_hum = 70;
 const int min_hum = 50;
 const int hum_margin = 5;
 
-const int window_close_pos = 90;
-const int window_open_pos = 180;
+const int window_close_pos = 180;
+const int window_open_pos = 90;
 
 // TODO: globals -> local machen
 const char* lighttext = "off";
