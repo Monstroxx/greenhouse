@@ -74,10 +74,10 @@ void setup() {
   // Start BME Sensor and check for errors
   if (!bme.begin(0x76)) // manchmal 0x77
   {
-    Serial.println("BME280 nicht gefunden!");
+    Serial.println("BME280 not found!");
     while (1)
     {
-      Serial.println("BME280 nicht gefunden! Bitte fixen und neustarten.");
+      Serial.println("BME280 not found! Please restart");
       //throw 404;
     }
   }
@@ -97,7 +97,9 @@ void setup() {
 
   // Add Servo to WindowServo
   WindowServo.attach(servoPin);
-  window_angle = 90;
+  window_angle = window_close_pos;
+  WindowServo.write(window_angle);
+  delay(2000);
 }
 
 void loop() {
@@ -286,7 +288,7 @@ void discoStep() {
 
   hsvToRgb(discoHue, 1.0, 1.0, r, g, b);
 
-  // optional: verhindert hartes "Einspringen" von Blau bei billigen LEDs
+  // Optional: Prevents the sudden, harsh “flash-on” of blue light in low-cost LEDs
   if (b > 0 && b < 5)
     b = 5;
 
