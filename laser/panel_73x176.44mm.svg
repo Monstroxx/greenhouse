@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="73mm" height="176.44mm"
+     viewBox="0 0 73 176.44">
+  <!-- Laser cut panel: 73 x 176.44 mm, Plexiglas 3.1 mm -->
+  <rect x="0" y="0" width="73" height="176.44"
+        fill="none" stroke="#FF0000" stroke-width="0.01"/>
+</svg>
