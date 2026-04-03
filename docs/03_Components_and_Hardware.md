@@ -39,5 +39,5 @@ Prototyping required rigorous breadboarding and physical wire routing prior to f
 ![Assembling the Hardware (2)](images/greenhouse-assemling-2.jpg)
 *Fitting the electronics within the 3D printed base parameters.*
 
-![Fritzing Connectivity Schematic](images/schematic.png)
+![Fritzing Connectivity Schematic](schematic.png)
 *Digital schematic highlighting proper voltage references and pin layouts.*
