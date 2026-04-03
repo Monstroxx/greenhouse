@@ -53,7 +53,7 @@ For a detailed, professional breakdown of the project's engineering, collaborati
 * [06 Difficulties and Conclusions](docs/06_Difficulties_and_Conclusions.md)
 * [07 Future Improvements](docs/07_Future_Improvements.md)
 
-You can also browse the [Main Directory Documentation Index](docs/README.md) for a summary of these topics, or view the [Source Code (`greenhouse.ino`)](greenhouse.ino) directly.
+You can also browse the [Main Directory Documentation Index](docs/README.md) for a summary of these topics.
 
 ---
 
@@ -197,7 +197,15 @@ greenhouse/
 ├── greenhouse.ino           # Main firmware source code
 ├── 3D/                      # 3D-printable parts (*.stl)
 ├── laser/                   # Laser-cut templates (*.svg)
-└── docs/                    # Additional documentation
+└── docs/                    # Extended documentation
+    ├── README.md            # Extended docs index
+    ├── 01_Project_Overview.md
+    ├── 02_Features_and_Theory.md
+    ├── 03_Components_and_Hardware.md
+    ├── 04_Planning_and_Collaboration.md
+    ├── 05_Software_Architecture.md
+    ├── 06_Difficulties_and_Conclusions.md
+    ├── 07_Future_Improvements.md
     ├── images/              # Documentation images
     ├── Greenhouse Presentation.pptx # Project presentation
     ├── netlist.xml          # Fritzing netlist export
