@@ -1,4 +1,6 @@
-# 🌿 Greenhouse
+# Greenhouse Hexaplant
+
+![Assembled Greenhouse](docs/images/Greenhouse-assembled.jpg)
 
 A smart greenhouse prototype developed as part of the **Erasmus 2026** exchange program between German and Spanish students. The system uses an Arduino Nano to automate plant care by monitoring environmental conditions and responding in real time.
 
@@ -7,6 +9,7 @@ A smart greenhouse prototype developed as part of the **Erasmus 2026** exchange 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Extended Documentation](#extended-documentation)
 - [Features](#features)
 - [Bill of Materials](#bill-of-materials)
 - [Wiring](#wiring)
@@ -35,6 +38,22 @@ The greenhouse monitors soil moisture, ambient light, temperature, humidity, and
 - **Display sensor data** on a built-in OLED screen.
 
 The enclosure is designed to be assembled from 3D-printed and laser-cut parts so it can be transported easily (e.g. on an airplane).
+
+---
+
+## Extended Documentation
+
+For a detailed, professional breakdown of the project's engineering, collaboration, and specific mechanisms, please consult the extended documentation files in the `docs` folder:
+
+* [01 Project Overview](docs/01_Project_Overview.md)
+* [02 Features and Theory](docs/02_Features_and_Theory.md)
+* [03 Components and Hardware](docs/03_Components_and_Hardware.md)
+* [04 Planning and Collaboration](docs/04_Planning_and_Collaboration.md)
+* [05 Software Architecture](docs/05_Software_Architecture.md)
+* [06 Difficulties and Conclusions](docs/06_Difficulties_and_Conclusions.md)
+* [07 Future Improvements](docs/07_Future_Improvements.md)
+
+You can also browse the [Main Directory Documentation Index](docs/README.md) for a summary of these topics, or view the [Source Code (`greenhouse.ino`)](greenhouse.ino) directly.
 
 ---
 
@@ -171,19 +190,19 @@ Install all libraries via the **Arduino IDE Library Manager** or clone them into
 
 ### Project Structure
 
-```
+```text
 greenhouse/
-├── README.md
-├── LICENSE
-├── greenhouse.ino           # Main firmware
-├── 3d/
-│   └── *.stl                # 3D-printable parts
-├── laser/
-│   └── *.svg                # Laser-cut templates
-└── docs/
-    ├── schematic.fzz        # Fritzing project
+├── README.md                # Project documentation
+├── LICENSE                  # MIT License
+├── greenhouse.ino           # Main firmware source code
+├── 3D/                      # 3D-printable parts (*.stl)
+├── laser/                   # Laser-cut templates (*.svg)
+└── docs/                    # Additional documentation
+    ├── images/              # Documentation images
+    ├── Greenhouse Presentation.pptx # Project presentation
     ├── netlist.xml          # Fritzing netlist export
-    └── schematic.png        # Fritzing png export
+    ├── schematic.fzz        # Fritzing project file
+    └── schematic.png        # Wiring schematic export
 ```
 
 ---
